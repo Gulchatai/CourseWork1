@@ -65,9 +65,9 @@ public class Main {
     }
 
     private static Employee minOfSalaries() {
-        double min = employees[0].getSalary();
+       double min = employees[0].getSalary();
         Employee minSalary = employees[0];
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < employees.length; i++) {
             Employee employee = employees[i];
             if (min > employee.getSalary()) {
                 min = employee.getSalary();
@@ -76,11 +76,13 @@ public class Main {
         }
         return minSalary;
     }
+    //Эта переменная немного избыточна, у тебя есть ниже переменная maxSalary там ведь есть зарплата, просто обращайся через геттер к зарплате)
 
     private static Employee maxOfSalaries() {
-        double max = employees[0].getSalary();
+        double max = 0;
+        // double max = employees[0].getSalary();
         Employee maxSalary = employees[0];
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < employees.length; i++) {
             Employee employee = employees[i];
             if (max < employee.getSalary()) {
                 max = employee.getSalary();
@@ -92,10 +94,10 @@ public class Main {
 
     private static double medianOfSalaries() {
         double median = 0;
-        for (Employee employee : employees) {
-            median += employee.getSalary();
-        }
-        median = median / employees.length;
+       // for (Employee employee : employees) {
+       //    median += employee.getSalary();
+       // }
+        median = sumOfSalaries() / employees.length;
         return median;
     }
 
