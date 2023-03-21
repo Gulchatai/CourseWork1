@@ -15,7 +15,8 @@ public class Main {
         employees[7] = new Employee("Николаев", "Николай", "Николаевич", 5, 10000);
         employees[8] = new Employee("Котова", "Елена", "Петровна", 5, 5000);
         employees[9] = new Employee("Котова", "Оксана", "Ивановна", 3, 25000);
-        //printingList();
+        printingList();
+        System.out.println();
         Arrays.stream(employees).forEach(System.out::println);
         System.out.println();
         System.out.println("Сумма зарплат всех сотрудников " + sumOfSalaries());
@@ -51,7 +52,7 @@ public class Main {
 
     private static void printingList() {
         for (Employee employee : employees) {
-            System.out.println(employees);
+            System.out.println(employee);
         }
     }
 
