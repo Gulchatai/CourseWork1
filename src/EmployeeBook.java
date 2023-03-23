@@ -2,32 +2,32 @@ public class EmployeeBook {
     private Employee[] employees = new Employee[10];
 
 
-public void addEmployee (Employee employee){
-    for (int i = 0; i < employees.length; i++) {
-        if (employees[i] == null) {
-            employees[i] = employee;
-            break;
+    public void addEmployee(Employee employee) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
+                employees[i] = employee;
+                break;
+            }
         }
     }
-}
 
-public void deleteEmployee (long id) {
-    for (int i = 0; i < employees.length; i++) {
-        if (employees[i] == null) {
-            continue;
-        }
-        if (employees[i].getId() == id) {
-            employees[i] = null;
+    public void deleteEmployee(long id) {
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i] == null) {
+                continue;
+            }
+            if (employees[i].getId() == id) {
+                employees[i] = null;
+            }
         }
     }
-}
 
     public void printingList() {
         for (Employee employee : employees) {
-            if (employee == null){
+            if (employee == null) {
                 continue;
             }
-             System.out.println(employee);
+            System.out.println(employee);
         }
     }
 
@@ -44,23 +44,32 @@ public void deleteEmployee (long id) {
     }
 
     public void changeDepartment(String family, String name, String patronymic, int department) {
-            for (Employee employee : employees) {
-                if (employee == null){
-                    continue;
-                }
-                if (employee.getFamily().equalsIgnoreCase(family) && employee.getName().equalsIgnoreCase(name)
-                        && employee.getPatronymic().equalsIgnoreCase(patronymic)) {
-                    employee.setDepartment(department);
-                }
+        for (Employee employee : employees) {
+            if (employee == null) {
+                continue;
             }
+            if (employee.getFamily().equalsIgnoreCase(family) && employee.getName().equalsIgnoreCase(name)
+                    && employee.getPatronymic().equalsIgnoreCase(patronymic)) {
+                employee.setDepartment(department);
+            }
+        }
     }
 
     public void listsByDepartment() {
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("Отдел номер " + i);
-           printingList();
-            }
-        }
+        Employee employeeD = employees[0];
+        int i = 1;
+        //      while (i <= 5) {
+        System.out.println("Отдел номер " + i);
+      //  printingList();
+        //      if ((employees[i].getDepartment() != i) || (employees[i] == null)) {
+        //          continue;
+        //      }
+        System.out.println(employees[i]);
+        i++;
+        //break;
+    }
+
+
 
     public double sumOfSalaries() {
         double sum = 0;
@@ -76,7 +85,7 @@ public void deleteEmployee (long id) {
     public Employee minOfSalaries() {
         double min = employees[0].getSalary();
         Employee minSalary = employees[0];
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < employees.length; i++) {
             if (employees[i] == null) {
                 continue;
             }
@@ -92,7 +101,7 @@ public void deleteEmployee (long id) {
     public Employee maxOfSalaries() {
         double max = employees[0].getSalary();
         Employee maxSalary = employees[0];
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < employees.length; i++) {
             if (employees[i] == null) {
                 continue;
             }
@@ -111,9 +120,9 @@ public void deleteEmployee (long id) {
             if (employee == null){
                 continue;
             }
-            median += employee.getSalary();
+        //    median += employee.getSalary();
         }
-        median = median / employees.length;
+        median = sumOfSalaries() / employees.length;
         return median;
     }
 
@@ -135,7 +144,10 @@ public void deleteEmployee (long id) {
         double min = Double.MAX_VALUE;
         Employee minSalary = null;
         for (Employee employee : employees) {
-            if (employee.getDepartment() != department) {
+            if (employee == null){
+                continue;
+            }
+            else if (employee.getDepartment() != department)  {
                 continue;
             }
             System.out.println(employee);
@@ -182,20 +194,20 @@ public void deleteEmployee (long id) {
     public double medianOfSalaries(int department){
         double median = 0;
         int numberOfEmployees = 0;
-        for (Employee employee : employees) {
-            if (employee == null){
-                continue;
-            }
-            if (employee.getDepartment() != department) {
-                continue;
-            }
-            median += employee.getSalary();
-            numberOfEmployees++;
-        }
-        if (numberOfEmployees == 0) {
-            System.out.println("Сотрудников нет в отделе");
-        }
-        median = median / numberOfEmployees;
+     //   for (Employee employee : employees) {
+     //       if (employee == null){
+     //           continue;
+     //      }
+     //       if (employee.getDepartment() != department) {
+     //           continue;
+     //       }
+     //       median += employee.getSalary();
+     //       numberOfEmployees++;
+     //   }
+     //   if (numberOfEmployees == 0) {
+     //       System.out.println("Сотрудников нет в отделе");
+     //   }
+        median = medianOfSalaries() / numberOfEmployees;
         return median;
     }
 
