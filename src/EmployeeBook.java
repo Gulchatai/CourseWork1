@@ -56,17 +56,10 @@ public class EmployeeBook {
     }
 
     public void listsByDepartment() {
-        Employee employeeD = employees[0];
-        int i = 1;
-        //      while (i <= 5) {
-        System.out.println("Отдел номер " + i);
-      //  printingList();
-        //      if ((employees[i].getDepartment() != i) || (employees[i] == null)) {
-        //          continue;
-        //      }
-        System.out.println(employees[i]);
-        i++;
-        //break;
+                for (int i = 1; i <= 5; i++) {
+                System.out.println("Отдел номер " + i);
+                printNamesOfEmployees(i);
+                }
     }
 
 
@@ -74,7 +67,7 @@ public class EmployeeBook {
     public double sumOfSalaries() {
         double sum = 0;
         for (Employee employee : employees) {
-            if (employee == null){
+            if (employee == null) {
                 continue;
             }
             sum += employee.getSalary();
@@ -116,12 +109,12 @@ public class EmployeeBook {
 
     public double medianOfSalaries() {
         double median = 0;
-        for (Employee employee : employees) {
-            if (employee == null){
-                continue;
-            }
+        //for (Employee employee : employees) {
+        //    if (employee == null){
+        //        continue;
+        //    }
         //    median += employee.getSalary();
-        }
+
         median = sumOfSalaries() / employees.length;
         return median;
     }

@@ -184,13 +184,22 @@ public class Main {
         }
 
         private static void printNamesOfEmployees ( int department){
+        int noEmployees = 0;
             for (Employee employee : employees) {
+                if (employee == null) {
+                    continue;
+                }
                 if (employee.getDepartment() != department) {
                     continue;
                 }
-                System.out.println(String.format("ID: %s\t фамилия: %S имя: %S отчество: %S  оклад: %s", employee.getId(),
-                        employee.getFamily(), employee.getName(), employee.getPatronymic(), employee.getSalary()));
-
+                if (employee.getDepartment() != 0) {
+                noEmployees = 1;
+                }
+                    System.out.println(String.format("ID: %s\t фамилия: %S имя: %S отчество: %S  оклад: %s", employee.getId(),
+                            employee.getFamily(), employee.getName(), employee.getPatronymic(), employee.getSalary()));
+            }
+            if (noEmployees != 1) {
+                System.out.println("В этом отделе нет сотрудников");
             }
         }
         private static void printEmployeesAmountLess(double amount){
